@@ -2,7 +2,7 @@
 
     <div class="navbar-brand">
         <a class="navbar-item" href="index.php?vista=home">
-        <img src="./img/logo.png" width="65" height="28">
+        <img src="./img/La simona Nombre.png" width="100" height="80">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Categorías</a>
+                <a class="navbar-link">Caracteristicas</a>
 
                 <div class="navbar-dropdown">
                     <a href="index.php?vista=category_new" class="navbar-item">Nueva</a>
@@ -46,14 +46,28 @@
                 </div>
             </div>
 
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Inventario</a>
+                <div class="navbar-dropdown">
+                    <a href="index.php?vista=Entrada" class="navbar-item">Entrada</a>
+                    <a href="./chat" class="navbar-item" target="_blank">Chat</a>
+                </div>
+            </div>
+
         </div>
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+
+                <a href="index.php?vista=Mostrar" class="button is-primary is-rounded" >
+                        Tabla
+                    </a>
+
                     <a href="index.php?vista=user_update&user_id_up=<?php echo $_SESSION['id']; ?>" class="button is-primary is-rounded">
                         Mi cuenta
                     </a>
+
 
                     <a href="index.php?vista=logout" class="button is-link is-rounded">
                         Salir

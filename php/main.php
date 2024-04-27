@@ -1,10 +1,21 @@
 <?php
 	
 	# Conexion a la base de datos #
-	function conexion(){
+	function conexion()
+	{
 		$pdo = new PDO('mysql:host=localhost;dbname=mi_db', 'root', '');
 		return $pdo;
+
+		
 	}
+	class registro
+{
+	public function conex()
+	{
+		$enlace = mysqli_connect("localHost", 'root', "", "mi_db");
+		return $enlace;
+	}
+}
 
 
 	# Verificar datos #

@@ -1,0 +1,80 @@
+/* General */
+body {
+    background-image: url(fondo.jpg);
+   margin: 0;
+   padding: 0;
+   font-family: 'Roboto', sans-serif;
+   text-align: center;
+ }
+ 
+ /* Input Forms*/
+ input[type="text"], input[type="password"]{
+   outline: none;
+   padding: 200px;
+   display: block;
+   width: 60px;
+   border-radius: 100px;
+   padding: 1px 20px;
+   border: 2px solid #c97e7e;
+   margin: 1px auto;
+   background-color:#E8EAE8 ;
+   font-size: 15px;
+   color:#cc7e7e ;
+ }
+
+ 
+ input[type="submit"] {
+   padding: 3px;
+   color: #fff;
+   background: #eab552;
+   width: 320px;
+   margin: 40px 20px;
+   margin-top: 0;
+   border-radius: 30px;
+   cursor: pointer;
+   font-size: 19px;
+ }
+
+ input[type="submit"]:hover {
+   background-color:#b57e4b;
+ }
+ p {
+ width: 400px;
+ margin: auto; 
+ background: rgba(173, 18, 18, 0.2);
+ padding: 10px 20px;
+ background-color: rgba(204, 120, 120, 0.8);
+ margin-top: 20px;
+ border-radius: 17px;
+ font-size: 18px;
+ 
+ }
+ .form {
+ width: 460px;
+ margin: auto; 
+ background: rgba(204, 129, 129, 0.8);
+ padding: 0px 200px;
+ margin-top: 1px;
+ border-radius: 70px;
+ 
+ }
+ /* Header */
+ header {
+   border-bottom: 2px solid #eee;
+   padding: 15px 0;
+   margin-bottom: 10px;
+   width: 100%;
+   text-align: center;
+ background-color: #9FA8A6;
+ font-size: 40px;
+ }
+ header a {
+   text-decoration: none;
+   color: #817269;
+ }
+  a {
+   text-decoration: none;
+   color: #d4c5b8;
+   font-size: 18px;
+ }
+ 
