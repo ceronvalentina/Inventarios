@@ -11,7 +11,7 @@
 			<div class="column">
 				<label>Inventario</label><br>
 				<div class="select is-rounded">
-					<select name="Ingreso">
+					<select name="Ingreso" required>
 						<option value="Entrada" selected="">Entrada</option>
 						<option value="Salida" selected="">Salida</option>
 					</select>
@@ -21,7 +21,7 @@
 				<label>Categoría</label><br>
 				<div class="select is-rounded">
 					<select name="categoria">
-						<option value="" selected="">Seleccione una opción</option>
+						<option value="" selected="" required>Seleccione una opción</option>
 						<?php
 						$categorias = conexion();
 						$categorias = $categorias->query("SELECT * FROM categoria");
@@ -39,7 +39,7 @@
 			<div class="column">
 				<label>Producto</label><br>
 				<div class="select is-rounded">
-					<select name="producto">
+					<select name="producto" required>
 						<option value="" selected="">Seleccione una opción</option>
 						<?php
 						$producto = conexion();

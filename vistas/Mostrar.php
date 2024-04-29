@@ -43,15 +43,13 @@ if (isset($_POST['Enviar'])) {
 	}
 }
 
-if(isset($_POST['fecha'])) {
-    // Obtener la fecha seleccionada por el usuario
-    $fecha_filtro = $_POST['fecha'];
+if (isset($_POST['fecha'])) {
+	// Obtener la fecha seleccionada por el usuario
+	$fecha_filtro = $_POST['fecha'];
 
-    // Consulta SQL con filtro por fecha
-    $registros = "SELECT * FROM registros WHERE fecha = '$fecha_filtro'";
-
-
+	$registros = "SELECT * FROM registros WHERE fecha = '$fecha_filtro'";
 }
+
 
 ?>
 
@@ -66,13 +64,13 @@ if(isset($_POST['fecha'])) {
 
 <body>
 	<div class="container-table2">
-	
+
 		<div class="table_header">Producto</div>
 		<div class="table_header">Cantidad Total</div>
 		<?php
-		$Suma = mysqli_query($getconex,"SELECT Producto, SUM(Cantidad) from registros GROUP BY Producto;");
-		while ($row = mysqli_fetch_assoc($Suma)) {?>
-		<div class="table_ _item">
+		$Suma = mysqli_query($getconex, "SELECT Producto, SUM(Cantidad) from registros GROUP BY Producto;");
+		while ($row = mysqli_fetch_assoc($Suma)) { ?>
+			<div class="table_ _item">
 				<?php echo $row["Producto"]; ?>
 			</div>
 			<div class="table_ _item">
@@ -86,12 +84,19 @@ if(isset($_POST['fecha'])) {
 
 	</div>
 	<form method="post">
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha">
-        <input type="submit" value="Filtrar">
-    </form>
+		<label for="fecha">Fecha:</label>
+		<input type="date" id="fecha" name="fecha">
+		<input type="submit" value="Filtrar">
+	</form>
+	<form action="vistas\PDF.php" method="POST" target="_blank">
+		<input type="date" value="Imprimir Informe" name="dia">
+		<input type="submit" value="Imprimir Informe">
+	</form>
+
+
+
 	<div class="container-table">
-	
+
 		<div class="table_header">Fecha</div>
 		<div class="table_header">Mesero</div>
 		<div class="table_header">Estado</div>
@@ -99,7 +104,7 @@ if(isset($_POST['fecha'])) {
 		<div class="table_header">Producto</div>
 		<div class="table_header">Cantidad</div>
 		<div class="table_header">Precio</div>
-		
+
 		<div class="table_header">Total</div>
 
 		<?php
@@ -140,12 +145,7 @@ if(isset($_POST['fecha'])) {
 	</div>
 
 
-	<form action="vistas\PDF.php" target="_blank" method="POST" >
-		<input type="submit" value="Imprimir Informe" name="fecha">
-		<?php $resultado ?>
 
-		</input>
-	</form>
 
 
 

@@ -10,9 +10,9 @@ function formatNumber($num)
 	return number_format($num, 0, ',', '.');
 }
 
+$resultado = $_POST['dia'];
 
-$registros = "SELECT * FROM registros";
-$resultado = mysqli_query($getconex, $registros);
+$resultado = mysqli_query($getconex, "SELECT * FROM registros WHERE fecha = '$resultado'");
 
 $column_code = "";
 $column_name = "";
