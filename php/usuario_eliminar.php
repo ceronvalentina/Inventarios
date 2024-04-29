@@ -6,7 +6,7 @@
     /*== Verificando usuario ==*/
     $check_usuario=conexion();
     $check_usuario=$check_usuario->query("SELECT usuario_id FROM usuario WHERE usuario_id='$user_id_del'");
-    
+     
     if($check_usuario->rowCount()==1){
 
     	$check_productos=conexion();

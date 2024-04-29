@@ -14,7 +14,6 @@
 					<select name="Ingreso">
 						<option value="Entrada" selected="">Entrada</option>
 						<option value="Salida" selected="">Salida</option>
-
 					</select>
 				</div>
 			</div>
