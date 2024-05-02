@@ -1,5 +1,9 @@
-<div class="main-container">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/cabecera.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 
+<div class="main-container">
+    
 	<form class="box login" action="" method="POST" autocomplete="off">
 		<h5 class="title is-5 has-text-centered is-uppercase">Inventario La Simona</h5>
 
@@ -17,6 +21,9 @@
 				<input class="input" type="password" name="login_clave" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100"
 					required>
 			</div>
+			<div class="view">
+               <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword"></div>
+            </div>
 		</div>
 
 		<p class="has-text-centered mb-4 mt-3">
