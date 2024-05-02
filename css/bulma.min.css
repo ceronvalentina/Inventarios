@@ -1263,7 +1263,7 @@ fieldset[disabled] .button.is-primary.is-inverted {
 .button.is-primary.is-outlined[disabled],
 fieldset[disabled] .button.is-primary.is-outlined {
     background-color: transparent;
-    border-color: #00d1b2;
+    border-color: #2b302f;
     box-shadow: none;
     color: #00d1b2
 }
