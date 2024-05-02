@@ -2,6 +2,7 @@
 	/*== Almacenando datos ==*/
     $product_id_del=limpiar_cadena($_GET['product_id_del']);
 
+	if($_SESSION['id']=='1'){
     /*== Verificando producto ==*/
     $check_producto=conexion();
     $check_producto=$check_producto->query("SELECT * FROM producto WHERE producto_id='$product_id_del'");
@@ -46,3 +47,12 @@
         ';
     }
     $check_producto=null;
+}else{
+	echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                No Tienes permisos para realizar esta accion
+            </div>
+        ';
+
+}

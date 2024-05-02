@@ -1,8 +1,9 @@
 <?php
 
+	
 	/*== Almacenando datos ==*/
     $user_id_del=limpiar_cadena($_GET['user_id_del']);
-
+	if($_SESSION['id']=='1'){
     /*== Verificando usuario ==*/
     $check_usuario=conexion();
     $check_usuario=$check_usuario->query("SELECT usuario_id FROM usuario WHERE usuario_id='$user_id_del'");
@@ -53,3 +54,13 @@
         ';
     }
     $check_usuario=null;
+}else
+{
+	echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                No Tienes permisos para realizar esta accion
+            </div>
+        ';
+
+}

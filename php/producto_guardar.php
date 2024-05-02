@@ -66,19 +66,7 @@
     }
 
 
-    /*== Verificando codigo ==*/
-    $check_codigo=conexion();
-    $check_codigo=$check_codigo->query("SELECT producto_codigo FROM producto WHERE producto_codigo='$codigo'");
-    if($check_codigo->rowCount()>0){
-        echo '
-            <div class="notification is-danger is-light">
-                <strong>¡Ocurrio un error inesperado!</strong><br>
-                El CODIGO de BARRAS ingresado ya se encuentra registrado, por favor elija otro
-            </div>
-        ';
-        exit();
-    }
-    $check_codigo=null;
+
 
 
     /*== Verificando nombre ==*/

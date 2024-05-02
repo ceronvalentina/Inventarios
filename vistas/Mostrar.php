@@ -83,15 +83,43 @@ if (isset($_POST['fecha'])) {
 
 
 	</div>
-	<form method="post">
-		<label for="fecha">Fecha:</label>
-		<input type="date" id="fecha" name="fecha">
-		<input type="submit" value="Filtrar">
-	</form>
-	<form action="vistas\PDF.php" method="POST" target="_blank">
-		<input type="date" value="Imprimir Informe" name="dia">
-		<input type="submit" value="Imprimir Informe">
-	</form>
+	<div>
+		<form method="post">
+			<label for="fecha">Fecha:</label>
+			<input type="date" id="fecha" name="fecha">
+			<input type="submit" value="Filtrar">
+		</form>
+		<form action="vistas\PDF.php" method="POST" target="_blank">
+			<label for="fecha">Informe por Fecha:</label>
+			<input type="date" value="Imprimir Informe" name="dia">
+			<input type="submit" value="Imprimir Informe">
+		</form>
+		<form action="vistas\PDF.php" method="POST" target="_blank">
+			<div class="column">
+				<label>Informe Por Producto</label><br>
+				<div class="select is-rounded">
+					<select name="producto" id="subcategoria">
+						<option value="" selected="" required>Seleccione una opción</option>
+
+						<?php
+						$categorias = conexion();
+						$categorias = $categorias->query("SELECT * FROM producto");
+						if ($categorias->rowCount() > 0) {
+							$categorias = $categorias->fetchAll();
+							foreach ($categorias as $row) {
+								echo '<option value="' . $row['producto_id'] . '">' . $row['producto_nombre'] . '</option>';
+							}
+						}
+						$categorias = null;
+						?>
+
+					</select>
+				</div>
+				<input type="submit" value="Imprimir Informe">
+			</div>
+			
+		</form>
+	</div>
 
 
 

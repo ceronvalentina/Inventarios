@@ -3,7 +3,8 @@
 
 	/*== Almacenando datos ==*/
     $product_id=limpiar_cadena($_POST['img_del_id']);
-
+    
+    if($_SESSION['id']=='Administrador'){
     /*== Verificando producto ==*/
     $check_producto=conexion();
     $check_producto=$check_producto->query("SELECT * FROM producto WHERE producto_id='$product_id'");
@@ -79,3 +80,13 @@
         ';
     }
     $actualizar_producto=null;
+}else
+{
+	echo '
+            <div class="notification is-danger is-light">
+                <strong>¡Ocurrio un error inesperado!</strong><br>
+                No Tienes permisos para realizar esta accion
+            </div>
+        ';
+
+}
