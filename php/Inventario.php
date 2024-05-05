@@ -59,8 +59,7 @@ if ($Ingreso == 'Salida') {
         $Suma = $categoria_fila['SUM(Cantidad)'];
     }
 
-    if ($producto_stock >= $Suma)
-    {
+    if ($producto_stock >= $Suma) {
 
 
         if (($Suma - $Cantidad_lote) <= 0) {
@@ -83,8 +82,7 @@ if ($Ingreso == 'Salida') {
 
     $FechaResult = mysqli_query($getconex, "SELECT `FV` FROM `registros` WHERE Lote='$Lote' && producto= '$producto_nombre'");
 
-    if ($FechaResult)
-    {
+    if ($FechaResult) {
         $FechaRow = mysqli_fetch_assoc($FechaResult);
 
         if ($FechaRow) {

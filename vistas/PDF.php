@@ -98,8 +98,7 @@ if (isset($_POST['dia'])) {
 }
 
 if (isset($_POST['producto'])) {
-
-    if ($_POST['producto'] = 'Seleccione una opcion') {
+    if ($_POST['producto'] == "") {
 
 
         $resultado = (mysqli_query($getconex, "SELECT Producto, Lote, FV, SUM(Cantidad) AS TotalCantidad 
@@ -146,8 +145,8 @@ if (isset($_POST['producto'])) {
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->SetY($Y_Fields_Name_position);
 
-        $pdf->SetX(20);
-        $pdf->Cell(35, 6, 'Nombre', 1, 0, 'C', 1);
+        $pdf->SetX(15);
+        $pdf->Cell(40, 6, 'Nombre', 1, 0, 'C', 1);
 
         $pdf->SetX(55);
         $pdf->Cell(30, 6, 'Lote', 1, 0, 'C', 1);
@@ -164,9 +163,9 @@ if (isset($_POST['producto'])) {
         //Now show the 3 columns
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetY($Y_Table_Position);
-        $pdf->SetX(20);
+        $pdf->SetX(15);
 
-        $pdf->MultiCell(65, 6, $column_code, 1,);
+        $pdf->MultiCell(40, 6, $column_code, 1,);
         $pdf->SetY($Y_Table_Position);
         $pdf->SetX(55);
 
@@ -235,8 +234,8 @@ if (isset($_POST['producto'])) {
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->SetY($Y_Fields_Name_position);
 
-        $pdf->SetX(20);
-        $pdf->Cell(35, 6, 'Nombre', 1, 0, 'L', 1);
+        $pdf->SetX(15);
+        $pdf->Cell(40, 6, 'Nombre', 1, 0, 'L', 1);
 
         $pdf->SetX(55);
         $pdf->Cell(30, 6, 'Lote', 1, 0, 'L', 1);
@@ -253,9 +252,9 @@ if (isset($_POST['producto'])) {
         //Now show the 3 columns
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetY($Y_Table_Position);
-        $pdf->SetX(20);
+        $pdf->SetX(15);
 
-        $pdf->MultiCell(65, 6, $column_code, 1);
+        $pdf->MultiCell(40, 6, $column_code, 1);
         $pdf->SetY($Y_Table_Position);
         $pdf->SetX(55);
 

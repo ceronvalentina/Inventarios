@@ -3,8 +3,10 @@
 
 	require_once "main.php";
 
+    
     /*== Almacenando id ==*/
     $id=limpiar_cadena($_POST['usuario_id']);
+    
 
     /*== Verificando usuario ==*/
 	$check_usuario=conexion();
