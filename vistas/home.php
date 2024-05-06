@@ -1,6 +1,6 @@
 <style>
     .containeeer {
-        background-color: black; 
+        background: linear-gradient(to right, #061A42, #000000 );
         color: white; 
         height: 100vh;
         display: flex;
