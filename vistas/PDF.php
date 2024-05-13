@@ -19,7 +19,7 @@ if (isset($_POST['Ingreso_Salida'])) {
 
         $resultado = $_POST['dia'];
 
-        $Total = mysqli_query($getconex, "SELECT DISTINCT(SELECT Sum(Total) from registros where `Estado`='Entrada' and Fecha= CURDATE())-(SELECT Sum(Total) from registros where `Estado`='Salida' and Fecha= CURDATE()) as Sumas from registros where Fecha= '$resultado'");
+        $Total = mysqli_query($getconex, "SELECT DISTINCT(SELECT Sum(Total) from registros where `Estado`='Entrada' and Fecha= '$resultado')-(SELECT Sum(Total) from registros where `Estado`='Salida' and Fecha= '$resultado') as Sumas from registros where Fecha= '$resultado'");
         if ($categoria_fila = mysqli_fetch_assoc($Total)) {
             $Total = $categoria_fila['Sumas'];
         }
