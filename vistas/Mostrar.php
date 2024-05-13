@@ -3,45 +3,13 @@
 require_once "php\main.php";
 $getmysql = new registro();
 $getconex = $getmysql->conex();
-$registros = "SELECT * FROM registros";
+$registros = "SELECT * FROM registros where Fecha= CURDATE();";
 
 function formatNumber($num)
 {
 	return number_format($num, 0, ',', '.');
 }
 
-if (isset($_POST['borrar'])) {
-	$sql = "delete from registros";
-	mysqli_query($getconex, $sql);
-	if (!$sql) {
-		echo '<script>
-			alert("No Eliminados");
-		
-			</script>';
-	} else {
-		echo '<script>
-			alert("Registros Eliminados");
-			
-			</script>';
-	}
-}
-
-if (isset($_POST['Enviar'])) {
-
-	$Cliente = $_POST['Cliente'];
-	$Producto = $_POST['Producto'];
-	$Cantidad = $_POST['Cantidad'];
-
-	$sql = "DELETE from registros where Cantidad='$Cantidad' and Cliente='$Cliente' and Botella='$Producto'";
-	mysqli_query($getconex, $sql);
-
-	if (!$sql) {
-		echo '<script>
-			alert("No Eliminado");
-			
-			</script>';
-	}
-}
 
 if (isset($_POST['fecha'])) {
 	// Obtener la fecha seleccionada por el usuario
@@ -62,8 +30,41 @@ if (isset($_POST['fecha'])) {
 
 </head>
 
+<style>
+	input[type="submit"] {
+		padding: 3px;
+		color: #fff;
+		background: #0063b4;
+		width: 150px;
+		margin: 20px 20px;
+		margin-top: 0;
+		border-radius: 30px;
+		cursor: pointer;
+		font-size: 15px;
+	}
+</style>
 
 <body>
+	<hr>
+	<form action="vistas\PDF.php" method="POST" target="_blank">
+		<div class="columns">
+
+			<div class="column">
+				<label for="fecha">Informe Ventas o Ingresos</label>
+				<input class="select is-rounded" type="date" value="" name="dia" required>
+				<div class="select is-rounded">
+					<select name="Ingreso_Salida">
+						<option value="">Entradas y Salidas</option>
+						<option value="Entrada">Entrada</option>
+						<option value="Salida">Salida</option>
+					</select>
+				</div>
+				<input type="submit" value="Imprimir Informe">
+			</div>
+		</div>
+	</form>
+	</div>
+
 	<div class="container-table2">
 
 		<div class="table_header">Producto</div>
@@ -84,6 +85,45 @@ if (isset($_POST['fecha'])) {
 
 
 	</div>
+
+
+
+	<div class="columns">
+		<div class="column">
+			<form method="post">
+				<label for="fecha">Fecha:</label>
+				<input type="date" id="fecha" name="fecha">
+				<input type="submit" value="Filtrar">
+			</form>
+		</div>
+
+		<form action="vistas\PDF.php" method="POST" target="_blank">
+
+			<label>Informe Por Producto</label><br>
+			<div class="select is-rounded">
+				<select name="producto" id="subcategoria">
+					<option value="" selected="" required>Seleccione una opción</option>
+
+					<?php
+					$categorias = conexion();
+					$categorias = $categorias->query("SELECT * FROM producto");
+					if ($categorias->rowCount() > 0) {
+						$categorias = $categorias->fetchAll();
+						foreach ($categorias as $row) {
+							echo '<option value="' . $row['producto_id'] . '">' . $row['producto_nombre'] . '</option>';
+						}
+					}
+					$categorias = null;
+					?>
+
+				</select>
+			</div>
+			<input type="submit" value="Imprimir Informe">
+	</div>
+
+	</form>
+	</div>
+
 
 
 	<div class="container-table">

@@ -3,8 +3,10 @@
 
 	require_once "main.php";
 
+    
     /*== Almacenando id ==*/
     $id=limpiar_cadena($_POST['usuario_id']);
+    
 
     /*== Verificando usuario ==*/
 	$check_usuario=conexion();
@@ -93,7 +95,7 @@
 
     /*== Almacenando datos del usuario ==*/
     $nombre=limpiar_cadena($_POST['usuario_nombre']);
-    $apellido=limpiar_cadena($_POST['usuario_apellido']);
+    $apellido=limpiar_cadena($_POST['usuario_apellidos']);
 
     $usuario=limpiar_cadena($_POST['usuario_usuario']);
     $email=limpiar_cadena($_POST['usuario_email']);
