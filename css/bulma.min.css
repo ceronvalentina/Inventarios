@@ -431,7 +431,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family: cursive
 }
 
 code,
@@ -1175,14 +1175,14 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 }
 
 .button.is-primary {
-    background-color: #a37726;
+    background-color: #0f2796;
     border-color: transparent;
     color: #fff
 }
 
 .button.is-primary.is-hovered,
 .button.is-primary:hover {
-    background-color: #95a315;
+    background-color: #0a0a08;
     border-color: transparent;
     color: #fff
 }
@@ -1200,7 +1200,7 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 
 .button.is-primary.is-active,
 .button.is-primary:active {
-    background-color: #909218;
+    background-color: #181816;
     border-color: transparent;
     color: #fff
 }
