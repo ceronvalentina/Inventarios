@@ -83,6 +83,24 @@
 		transform: translate(-50%, -50%);
 
 	}
+
+	.contenedor {
+		display: flex;
+		/* Utiliza flexbox para alinear elementos */
+		align-items: center;
+		/* Alinea los elementos verticalmente */
+	}
+
+	#campoTexto {
+		flex: 1;
+		/* El campo de texto ocupa todo el espacio disponible */
+	}
+
+	.button {
+		margin-left: 0px;
+		/* Agrega un margen a la izquierda del botón */
+		/* Estilos adicionales según tus preferencias */
+	}
 </style>
 
 <?php
@@ -177,17 +195,19 @@ $datos = $check_producto->fetch();
 
 			<div class="columns">
 				<div class="column">
-					<div class="control">
-						<label>Nombres</label>
-						<input class="input" type="text" name="usuario_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}"
-							maxlength="40" required value="<?php echo $datos['usuario_nombre']; ?>">
-					</div>
+					<label>Nombre</label>
+					<input name="usuario_nombre" class="input" type="text" id="usuario_nombre"
+						pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" value="<?php echo $datos['usuario_nombre']; ?>"
+						readonly>
+					<button type="button" class="button" onclick="Nombre()">Editar</button>
 				</div>
 				<div class="column">
 					<div class="control">
 						<label>Apellidos</label>
-						<input class="input" type="text" name="usuario_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}"
-							maxlength="40" required value="<?php echo $datos['usuario_apellido']; ?>">
+						<input name="usuario_apellidos" class="input" type="text" id="usuario_apellidos"
+							pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40"
+							value="<?php echo $datos['usuario_apellido']; ?>" readonly>
+						<button type="button" class="button" onclick="Apellido()">Editar</button>
 					</div>
 				</div>
 			</div>
@@ -196,14 +216,16 @@ $datos = $check_producto->fetch();
 					<div class="control">
 						<label>Usuario</label>
 						<input class="input" type="text" name="usuario_usuario" pattern="[a-zA-Z0-9]{4,20}" maxlength="20"
-							required value="<?php echo $datos['usuario_usuario']; ?>">
+							id="usuario_usuario" required value="<?php echo $datos['usuario_usuario']; ?>" readonly>
+						<button type="button" class="button" onclick="Usuario()">Editar</button>
 					</div>
 				</div>
 				<div class="column">
 					<div class="control">
 						<label>Email</label>
-						<input class="input" type="email" name="usuario_email" maxlength="70"
-							value="<?php echo $datos['usuario_email']; ?>">
+						<input class="input" type="email" name="usuario_email" maxlength="70" id="usuario_email"
+							value="<?php echo $datos['usuario_email']; ?>" readonly>
+						<button type="button" class="button" onclick="Email()">Editar</button>
 					</div>
 				</div>
 			</div>
@@ -261,3 +283,57 @@ $datos = $check_producto->fetch();
 	$check_usuario = null;
 	?>
 </div>
+<script>
+
+	function Nombre() {
+		var campo = document.getElementById("usuario_nombre");
+
+		// Si el campo está bloqueado, habilita la edición
+		if (campo.readOnly) {
+			campo.readOnly = false;
+			campo.focus(); // Coloca el cursor en el campo de texto
+		} else {
+			// Si el campo está desbloqueado, bloquea la edición
+			campo.readOnly = true;
+		}
+	}
+
+	function Apellido() {
+		var campo = document.getElementById("usuario_apellidos");
+
+		// Si el campo está bloqueado, habilita la edición
+		if (campo.readOnly) {
+			campo.readOnly = false;
+			campo.focus(); // Coloca el cursor en el campo de texto
+		} else {
+			// Si el campo está desbloqueado, bloquea la edición
+			campo.readOnly = true;
+		}
+	}
+
+	function Usuario() {
+		var campo = document.getElementById("usuario_usuario");
+
+		// Si el campo está bloqueado, habilita la edición
+		if (campo.readOnly) {
+			campo.readOnly = false;
+			campo.focus(); // Coloca el cursor en el campo de texto
+		} else {
+			// Si el campo está desbloqueado, bloquea la edición
+			campo.readOnly = true;
+		}
+	}
+
+	function Email() {
+		var campo = document.getElementById("usuario_email");
+
+		// Si el campo está bloqueado, habilita la edición
+		if (campo.readOnly) {
+			campo.readOnly = false;
+			campo.focus(); // Coloca el cursor en el campo de texto
+		} else {
+			// Si el campo está desbloqueado, bloquea la edición
+			campo.readOnly = true;
+		}
+	}
+</script>

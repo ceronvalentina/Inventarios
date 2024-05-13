@@ -17,7 +17,7 @@ if(isset($_POST['categoria_id'])) {
         // Construir las opciones del segundo select
         $options = '<option value="" selected="" required>Seleccione una opción</option>';
         while($row = mysqli_fetch_assoc($result)) {
-            $options .= '<option value="' . $row['producto_id'] . '">' . $row['producto_nombre']  . '</option>';
+            $options .= '<option value="' . $row['producto_nombre'] . '">' . $row['producto_nombre']  . '</option>';
         }
         // Devolver las opciones como respuesta
         echo $options;

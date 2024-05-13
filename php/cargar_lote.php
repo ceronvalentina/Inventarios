@@ -1,23 +1,24 @@
 <?php
 // Incluir archivo de conexión a la base de datos
-require_once "./php/main.php";
+require_once "main.php";
 $getmysql = new registro();
 $getconex = $getmysql->conex();
 
-if(isset($_POST['Producto_nombre'])) {
+if(isset($_POST['Nombre'])) {
     // Obtener el nombre del producto seleccionado
-    $Producto_nombre = $_POST['Producto_nombre'];
+    $Nombre = $_POST['Nombre'];
 
     // Consulta para obtener los lotes del producto seleccionado
-    $query = "SELECT DISTINCT * FROM registros WHERE Producto = '$Producto_nombre';";
-    $result = mysqli_query($getconex, $query);
+
+    $query = "SELECT DISTINCT Lote FROM registros WHERE Producto = '$Nombre';";
+    $result = mysqli_query($getconex, $query); 
 
     // Comprobar si hay resultados
     if(mysqli_num_rows($result) > 0) {
         // Construir las opciones del select de Lote
         $options = '<option value="" selected="" required>Seleccione una opción</option>';
         while($row = mysqli_fetch_assoc($result)) {
-            $options .= '<option value="' . $row['id'] . '">' . $row['Lote']  . '</option>';
+            $options .= '<option value="' . $row['Lote'] . '">' . $row['Lote']  . '</option>';
         }
         // Devolver las opciones como respuesta
         echo $options;

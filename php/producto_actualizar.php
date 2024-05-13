@@ -1,6 +1,9 @@
 <?php
+    require_once "../inc/session_start.php";
 	require_once "main.php";
 
+    $usuario_id = $_SESSION['id'];
+    
 	/*== Almacenando id ==*/
     $id=limpiar_cadena($_POST['producto_id']);
 
@@ -139,7 +142,7 @@
 
     /*== Actualizando datos ==*/
     $actualizar_producto=conexion();
-    $actualizar_producto=$actualizar_producto->prepare("UPDATE producto SET producto_codigo=:codigo,producto_nombre=:nombre,producto_precio=:precio,producto_stock=:stock,categoria_id=:categoria WHERE producto_id=:id");
+    $actualizar_producto=$actualizar_producto->prepare("UPDATE producto SET producto_codigo=:codigo,producto_nombre=:nombre,producto_precio=:precio,producto_stock=:stock,categoria_id=:categoria,usuario_id='$usuario_id' WHERE producto_id=:id");
 
     $marcadores=[
         ":codigo"=>$codigo,
