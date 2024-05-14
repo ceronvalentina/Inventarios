@@ -9,7 +9,7 @@
 
         # Eliminar usuario #
         if(isset($_GET['user_id_del'])){
-            require_once "./php/usuario_eliminar.php";
+            require_once "./php/usuario_chat_eliminar.php";
         }
 
         if(!isset($_GET['page'])){
@@ -18,15 +18,15 @@
             $pagina=(int) $_GET['page'];
             if($pagina<=1){
                 $pagina=1;
-            } 
+            }
         }
 
         $pagina=limpiar_cadena($pagina);
-        $url="index.php?vista=user_list&page=";
+        $url="index.php?vista=user_list_chat&page=";
         $registros=15;
         $busqueda="";
 
         # Paginador usuario #
-        require_once "./php/usuario_lista.php";
+        require_once "./php/usuarios_chat.php";
     ?>
 </div>

@@ -90,13 +90,6 @@ if (isset($_POST['fecha'])) {
 	</div>
 
 
-
-
-
-
-
-
-
 	<div class="container-table">
 
 		<div class="table_header">Fecha</div>
@@ -148,7 +141,7 @@ if (isset($_POST['fecha'])) {
 	<div class="columns">
 		<div class="column">
 			<form method="post">
-				<label>Fecha:</label><br>
+				<div class="table_header">Fecha</div>
 				<hr>
 				<input type="date" id="fecha" name="fecha">
 				<input type="submit" value="Filtrar">
@@ -157,7 +150,7 @@ if (isset($_POST['fecha'])) {
 		<div class="column">
 			<form action="vistas\PDF.php" method="POST" target="_blank">
 
-				<label>Informe Por Producto</label><br>
+				<div class="table_header">Informe por productos</div>
 				<hr>
 				<div class="select is-rounded">
 					<select name="producto" id="subcategoria">
@@ -179,26 +172,54 @@ if (isset($_POST['fecha'])) {
 				</div>
 				<input type="submit" value="Imprimir Informe">
 			</form>
-			
+
 		</div>
 		<div class="column">
-				<form action="vistas\PDF.php" method="POST" target="_blank">
+			<form action="vistas\PDF.php" method="POST" target="_blank">
 
-					<label>Informe Ventas o Ingresos</label>
-					<hr>
-					<input class="select is-rounded" type="date" value="" name="dia" required>
-					<div class="select is-rounded">
-						<select name="Ingreso_Salida">
-							<option value="">Entradas y Salidas</option>
-							<option value="Entrada">Entrada</option>
-							<option value="Salida">Salida</option>
-						</select>
-					</div>
-					<input type="submit" value="Imprimir Informe">
+			<div class="table_header">Informe por Categoria</div>
+				<hr>
+				<div class="select is-rounded">
+					<select name="Categorias" id="subcategoria">
+						<option value="" selected="" required>Seleccione una opción</option>
 
-				</form>
-			</div>
+						<?php
+						$categorias = conexion();
+						$categorias = $categorias->query("SELECT * FROM categoria");
+						if ($categorias->rowCount() > 0) {
+							$categorias = $categorias->fetchAll();
+							foreach ($categorias as $row) {
+								echo '<option value="' . $row['categoria_nombre'] . '">' . $row['categoria_nombre'] . '</option>';
+							}
+						}
+						$categorias = null;
+						?>
 
+					</select>
+				</div>
+				<input type="submit" value="Imprimir Informe">
+
+			</form>
+		</div>
+		<div class="column">
+			<form action="vistas\PDF.php" method="POST" target="_blank">
+
+			<div class="table_header">Informe de Ventas y ingresos</div>
+				<hr>
+				<div class="select is-rounded">
+					<select name="Ingreso_Salida"><hr>
+						<option value="">Entradas y Salidas</option>
+						<option value="Entrada">Entrada</option>
+						<option value="Salida">Salida</option>
+					</select>
+				</div>
+				<input class="select is-rounded" type="date" value="" name="dia" required>
+				
+				<input type="submit" value="Imprimir Informe">
+
+			</form>
+		</div>
+		
 
 	</div>
 	<div class="column">

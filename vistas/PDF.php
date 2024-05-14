@@ -55,7 +55,6 @@ if (isset($_POST['Ingreso_Salida'])) {
         $name = $row["Mesero"];
         $real_price = $row["Producto"];
         $price_to_show = formatNumber($row["Total"]);
-
         $Cantidad = $row['Cantidad'];
 
         $column_code .= $code . "\n";
@@ -104,7 +103,7 @@ if (isset($_POST['Ingreso_Salida'])) {
     $pdf->SetX(140);
     $pdf->Cell(30, 6, 'Cantidad', 1, 0, 'R', 1);
 
-    
+
     $pdf->Ln();
 
     //Now show the 3 columns
@@ -318,5 +317,96 @@ if (isset($_POST['producto'])) {
 
         $pdf->Output();
     }
+}
+
+
+if (isset($_POST['Categorias'])) {
+
+    $Categorias = $_POST['Categorias'];
+    
+    $resultado=mysqli_query($getconex,"SELECT * FROM registros WHERE Categoria= '$Categorias'" );
+
+    $column_code = "";
+    $column_name = "";
+    $column_price = "";
+    $column_producto = "";
+
+
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $code = $row["Producto"];
+        $name = $row["Lote"];
+        $real_price = $row["Cantidad"];
+        $price_to_show = formatNumber($row["Cantidad"]);
+
+        $column_code .= $code . "\n";
+        $column_name .= $name . "\n";
+        if($real_price<0){
+        $column_producto .= "\n";
+        $column_price .= $price_to_show . "\n";}
+        else{
+            $column_producto .= $real_price."\n";
+            $column_price .=  "\n";
+
+        }
+
+    }
+
+    mysqli_close($getconex);
+
+    //Create a new PDF file
+    $pdf = new FPDF();
+    $pdf->AddPage();
+
+    $image_file = '../img/La simona Nombre.png';
+    $pdf->Image($image_file, 40, 220);
+    //Fields Name position
+    $Y_Fields_Name_position = 20;
+    //Table position, under Fields Name
+    $Y_Table_Position = 26;
+
+    //First create each Field Name
+//Gray color filling each Field Name box
+    $pdf->SetFillColor(232, 232, 232);
+    //Bold Font for Field Name
+    $pdf->SetFont('Arial', 'B', 12);
+    $pdf->SetY($Y_Fields_Name_position);
+
+    $pdf->SetX(15);
+    $pdf->Cell(40, 6, 'Nombre', 1, 0, 'L', 1);
+
+    $pdf->SetX(55);
+    $pdf->Cell(30, 6, 'Lote', 1, 0, 'L', 1);
+
+    $pdf->SetX(155);
+    $pdf->Cell(45, 6, 'Salida', 1, 0, 'C', 1);
+
+    $pdf->SetX(85);
+    $pdf->Cell(70, 6, 'Entrada', 1, 0, 'C', 1);
+
+    $pdf->SetX(900);
+    $pdf->Ln();
+
+    //Now show the 3 columns
+    $pdf->SetFont('Arial', '', 12);
+    $pdf->SetY($Y_Table_Position);
+    $pdf->SetX(15);
+
+    $pdf->MultiCell(40, 6, $column_code, 1);
+    $pdf->SetY($Y_Table_Position);
+    $pdf->SetX(55);
+
+    $pdf->MultiCell(100, 6, $column_name, 1);
+    $pdf->SetY($Y_Table_Position);
+    $pdf->SetX(85);
+
+    $pdf->MultiCell(0, 6, $column_producto, 1,'C');
+    $pdf->SetY($Y_Table_Position);
+    $pdf->SetX(155);
+
+    $pdf->MultiCell(0, 6, $column_price, 1, 'R');
+    $pdf->SetY($Y_Table_Position);
+    $pdf->SetX(140);
+
+    $pdf->Output();
 }
 

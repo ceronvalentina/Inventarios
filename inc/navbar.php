@@ -47,11 +47,17 @@
             </div>
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Inventario</a>
+                <a class="navbar-link">Chat</a>
+
                 <div class="navbar-dropdown">
-                    <a href="index.php?vista=Entrada" class="navbar-item">Entrada</a>
-                    <a href="./chat" class="navbar-item" target="_blank">Chat</a>
+                    <a href="./chat/login.php" class="navbar-item" target="_blank">Nuevo Usuario Chat</a>
+                    <a href="index.php?vista=user_list_chat" class="navbar-item">Usuarios del chat</a>
                 </div>
+            </div>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a href="index.php?vista=Entrada" class="navbar-item">Inventario</a>
+
             </div>
 
         </div>
